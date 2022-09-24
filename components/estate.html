@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It-Prism Real Estate Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/estate.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-3 shadow"
+        style="background-color: var(--nav-bg); border-bottom-left-radius: var(--rounded-4);border-bottom-right-radius: var(--rounded-4); z-index: 10;">
+        <div class="container-fluid row justify-content-start">
+            <a class="navbar-brand ms-4 col-1" href="#">
+                <svg class="nav-logo-svg" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M14.8711 2.85872C20.5201 -0.286322 27.4799 -0.286322 33.1289 2.85872L38.8711 6.05562C44.5201 9.20066 48 15.0129 48 21.303V27.6968C48 33.9869 44.5201 39.7992 38.8711 42.9442L33.1289 46.1411C27.4799 49.2862 20.5201 49.2862 14.8711 46.1411L9.12893 42.9442C3.47993 39.7992 0 33.9869 0 27.6968V21.303C0 15.0129 3.47993 9.20066 9.12893 6.05562L14.8711 2.85872ZM23.7701 10.8535C20.6942 10.6948 20.6942 10.6962 20.6941 10.6975L20.6939 10.7003L20.6936 10.7064L20.693 10.7204L20.6915 10.7552C20.6905 10.7816 20.6894 10.814 20.6885 10.8522C20.6868 10.9286 20.6856 11.0285 20.6869 11.1494C20.6894 11.3906 20.7012 11.7182 20.7364 12.1117C20.8062 12.8921 20.9711 13.9666 21.3579 15.1535C22.1362 17.5418 23.8759 20.53 27.6177 22.2704C29.3773 23.0888 30.2242 24.4572 30.6572 25.7857C30.8761 26.4573 30.973 27.0813 31.0136 27.5347C31.0336 27.7583 31.0391 27.9314 31.0402 28.0368C31.0407 28.0892 31.0401 28.124 31.0398 28.139C31.0396 28.1465 31.0395 28.1489 31.0396 28.146L31.04 28.1377L31.0403 28.1304L31.0405 28.126L31.0407 28.1236C31.0407 28.1224 31.0408 28.1211 34.1167 28.2798C37.1925 28.4385 37.1926 28.4372 37.1927 28.4358L37.1928 28.433L37.1931 28.4269L37.1938 28.413L37.1953 28.3781C37.1958 28.3652 37.1963 28.3508 37.1968 28.335C37.1973 28.3186 37.1978 28.3006 37.1982 28.2811C37.2 28.2047 37.2011 28.1048 37.1999 27.984C37.1974 27.7428 37.1856 27.4151 37.1504 27.0217C37.0805 26.2412 36.9156 25.1667 36.5288 23.9799C35.7505 21.5916 34.0108 18.6034 30.2691 16.863C28.5095 16.0445 27.6625 14.6762 27.2295 13.3476C27.0107 12.6761 26.9137 12.052 26.8732 11.5986C26.8532 11.3751 26.8477 11.2019 26.8466 11.0966C26.846 11.0442 26.8466 11.0093 26.847 10.9943L26.8471 10.9873C26.8472 10.9861 26.8472 10.9858 26.8472 10.9865M23.7701 10.8535C26.8459 11.0122 26.846 11.011 26.8461 11.0097ZM26.8461 11.0097L26.8462 11.0073ZM26.8462 11.0073L26.8464 11.0029ZM26.8464 11.0029L26.8468 10.9956ZM26.8468 10.9956L26.8471 10.9873ZM13.7113 20.916C10.6355 20.7573 10.6354 20.7587 10.6353 20.76L10.6352 20.7628L10.6349 20.7689L10.6342 20.7829L10.6327 20.8177C10.6317 20.8441 10.6307 20.8765 10.6298 20.9147C10.628 20.9911 10.6269 21.091 10.6281 21.2119C10.6306 21.4531 10.6424 21.7808 10.6776 22.1742C10.7475 22.9546 10.9123 24.0291 11.2991 25.216C12.0775 27.6043 13.8172 30.5925 17.5589 32.3328C19.3185 33.1513 20.1655 34.5197 20.5985 35.8482C20.8173 36.5198 20.9143 37.1438 20.9548 37.5972C20.9748 37.8208 20.9803 37.9939 20.9814 38.0992C20.9819 38.1517 20.9814 38.1865 20.981 38.2015C20.9809 38.2089 20.9807 38.2114 20.9809 38.2085L20.9812 38.2002L20.9816 38.1929L20.9818 38.1885L20.9819 38.1861C20.982 38.1849 20.982 38.1836 24.0579 38.3423C27.1338 38.501 27.1338 38.4997 27.1339 38.4983L27.1341 38.4955L27.1344 38.4894L27.135 38.4755L27.1365 38.4406C27.1375 38.4143 27.1386 38.3818 27.1395 38.3436C27.1412 38.2672 27.1423 38.1673 27.1411 38.0464C27.1386 37.8053 27.1268 37.4776 27.0916 37.0842C27.0218 36.3037 26.8569 35.2292 26.4701 34.0424C25.6918 31.6541 23.9521 28.6659 20.2103 26.9255C18.4507 26.107 17.6037 24.7387 17.1708 23.4101C16.9519 22.7386 16.855 22.1145 16.8144 21.6611C16.7944 21.4376 16.7889 21.2645 16.7878 21.1591C16.7873 21.1067 16.7879 21.0718 16.7882 21.0568L16.7884 21.0498L16.788 21.0582L16.7877 21.0654L16.7875 21.0698L16.7873 21.0722C16.7873 21.0735 16.7872 21.0747 13.7113 20.916Z"
+                        fill="var(--navbar-svg)" />
+                </svg>
+            </a>
+            <form class="col-lg-5 col-md-8 col-9 ps-4" role="search">
+                <div class="nav-form position-relative d-flex align-items-center border rounded-4 py-1 px-4"
+                    style="background-color: var(--search-bg);">
+                    <span class="nav-search-icon p-2">
+                        <svg class="nav-search-svg" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                                stroke="var(--nav-gray)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 21L17 17" stroke="var(--nav-gray)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <input class="form-control me-2 border-0 shadow-none bg-transparent" type="search"
+                        placeholder="Search" aria-label="Search" style="color: var(--nav-gray);">
+
+                    <span>
+                        <svg class="config" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5H11" stroke="var(--nav-offblack)" stroke-width="2" stroke-linecap="round" />
+                            <path d="M8 4.5H18" stroke="var(--nav-offblack)" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="15" cy="14.5" r="3" stroke="var(--nav-offblack)" stroke-width="2" />
+                            <circle cx="4" cy="4.5" r="3" stroke="var(--nav-offblack)" stroke-width="2" />
+                        </svg>
+
+                    </span>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <!-- SideBar -->
+    <div class="sidebar-main">
+        <div class="container-fluid row p-0 m-0">
+            <div class="col-1 p-0">
+                <div class="list-group h-100" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                        href="#list-home" role="tab" aria-controls="list-home">
+                        <span class="d-inline-block p-3 rounded-3 mb-3">
+                            <svg width="30" height="32" viewBox="0 0 30 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.66602 12.6687C1.66602 11.7151 2.11933 10.8184 2.88717 10.253L14.9993 1.33398L27.1115 10.253C27.8794 10.8184 28.3327 11.7151 28.3327 12.6687V28.1673C28.3327 29.548 27.2134 30.6673 25.8327 30.6673H19.9993C19.4471 30.6673 18.9993 30.2196 18.9993 29.6673V21.1673C18.9993 20.8912 18.7755 20.6673 18.4993 20.6673H11.4993C11.2232 20.6673 10.9993 20.8912 10.9993 21.1673V29.6673C10.9993 30.2196 10.5516 30.6673 9.99935 30.6673H4.16602C2.7853 30.6673 1.66602 29.548 1.66602 28.1673V12.6687Z"
+                                    stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        href="#list-profile" role="tab" aria-controls="list-profile">
+                        <span class="d-inline-block p-3 rounded-3 mb-3">
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M27.0298 21.0879C26.215 23.1044 24.9193 24.8911 23.2556 26.2921C21.592 27.693 19.6108 28.6657 17.485 29.1253C15.3591 29.5849 13.1531 29.5175 11.0593 28.929C8.96549 28.3404 7.04744 27.2486 5.47239 25.7487C3.89734 24.2488 2.71313 22.3864 2.023 20.3238C1.33288 18.2613 1.15779 16.0612 1.51302 13.9154C1.86825 11.7697 2.743 9.74338 4.06101 8.01325C5.37901 6.28313 7.10024 4.90169 9.07463 3.9894"
+                                    stroke="#6E7191" stroke-width="2" stroke-linecap="round" />
+                                <path
+                                    d="M21.1018 2.44072C19.9471 1.96243 18.7332 1.64983 17.4962 1.51007C16.673 1.41707 15.9993 2.09735 15.9993 2.92578L15.9993 13.2591C15.9993 14.0875 16.6709 14.7591 17.4993 14.7591L27.8327 14.7591C28.6611 14.7591 29.3414 14.0855 29.2484 13.2623C29.1086 12.0252 28.796 10.8114 28.3177 9.65667C27.6477 8.039 26.6656 6.56914 25.4274 5.33102C24.1893 4.09291 22.7195 3.11078 21.1018 2.44072Z"
+                                    stroke="#6E7191" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+                        href="#list-messages" role="tab" aria-controls="list-messages">
+                        <span class="d-inline-block p-3 rounded-3 mb-3">
+                            <svg width="31" height="19" viewBox="0 0 31 19" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.9105 1.09926L29.9104 1.09932L29.9104 13.5842" stroke="#6E7191"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M29.6674 1.34121L17.7666 13.333L11.7666 6.95585L1.38944 17.333"
+                                    stroke="#6E7191" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+                        href="#list-settings" role="tab" aria-controls="list-settings">
+                        <span class="d-inline-block p-3 rounded-3 mb-3">
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16.9993" cy="16.9993" r="5.33333" stroke="#6E7191" stroke-width="2" />
+                                <path
+                                    d="M15.2838 2.52894C16.0604 1.23298 17.9383 1.23298 18.7149 2.52894L20.482 5.47782C20.9349 6.23361 21.829 6.60398 22.6837 6.3898L26.0184 5.55414C27.4839 5.18688 28.8118 6.5148 28.4446 7.98032L27.6089 11.315C27.3947 12.1697 27.7651 13.0638 28.5209 13.5167L31.4698 15.2838C32.7657 16.0604 32.7657 17.9383 31.4698 18.7149L28.5209 20.482C27.7651 20.9349 27.3947 21.829 27.6089 22.6837L28.4446 26.0184C28.8118 27.4839 27.4839 28.8118 26.0184 28.4446L22.6837 27.6089C21.829 27.3947 20.9349 27.7651 20.482 28.5209L18.7149 31.4698C17.9383 32.7657 16.0604 32.7657 15.2838 31.4698L13.5167 28.5209C13.0638 27.7651 12.1697 27.3947 11.315 27.6089L7.98031 28.4446C6.5148 28.8118 5.18688 27.4839 5.55414 26.0184L6.3898 22.6837C6.60398 21.829 6.23361 20.9349 5.47782 20.482L2.52894 18.7149C1.23298 17.9383 1.23298 16.0604 2.52894 15.2838L5.47782 13.5167C6.23361 13.0638 6.60398 12.1697 6.3898 11.315L5.55414 7.98031C5.18688 6.5148 6.5148 5.18688 7.98031 5.55414L11.315 6.3898C12.1697 6.60398 13.0638 6.23361 13.5167 5.47782L15.2838 2.52894Z"
+                                    stroke="#6E7191" stroke-width="2" />
+                            </svg>
+
+
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action">
+                        <span class="d-inline-block p-3 rounded-3 mb-3 dark" role="button">
+                            <svg width="23" height="24" viewBox="0 0 23 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.7312 17.6188C11.8951 17.6188 7.16398 12.8003 7.16398 6.8564C7.16398 5.10907 7.57283 3.459 8.29842 2C4.0622 3.40206 1 7.45561 1 12.2376C1 18.1815 5.73111 23 11.5672 23C15.6877 23 19.2573 20.5981 21 17.094C19.9707 17.4347 18.8721 17.6188 17.7312 17.6188Z"
+                                    stroke="#14142B" stroke-width="2" />
+                            </svg>
+                        </span>
+                        <span class="d-inline-block p-3 rounded-3 mb-3 light" role="button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="6" stroke="#14142B" stroke-width="2" />
+                                <path d="M12 1V2M12 23L12 22" stroke="#14142B" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4.22168 19.7783L4.92879 19.0712M19.778 4.22197L19.0709 4.92908"
+                                    stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4.22168 4.22168L4.92879 4.92879M19.778 19.778L19.0709 19.0709"
+                                    stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M1 12H2M23 12L22 12" stroke="#14142B" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="h-100 d-flex align-items-end">
+                        <a class="list-group-item list-group-item-action">
+                        <span class="d-inline-block p-3 rounded-3 mb-3" role="button">
+                            <svg width="32" height="26" viewBox="0 0 32 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21.8194 21.4853C17.1331 26.1716 9.53514 26.1716 4.84885 21.4853C0.162554 16.799 0.162554 9.20101 4.84885 4.51472C9.53514 -0.171572 17.1331 -0.171572 21.8194 4.51472"
+                                stroke="#6E7191" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M26.666 9L30.2216 13L26.666 17" stroke="#6E7191" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M30 13L13.3333 13" stroke="#6E7191" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        </span>
+                    </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Body -->
+            <div class="col-11 ps-4 pe-0 pe-lg-4">
+                <div class="tab-content ps-4 ps-sm-0" id="nav-tabContent">
+                    <!-- @1 -->
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel"
+                        aria-labelledby="list-home-list">
+                        <div class="container-fluid row ps-0 pe-0 pe-lg-3 m-0">
+                            <div class="col-lg-6 pe-5 ps-0">
+                                <div class="container-fluid p-0">
+                                    <div class="filter-btns">
+                                        <a href="#" class="me-2 mt-3 mt-sm-0 px-4 py-3 d-inline-block border border-2 rounded-pill"
+                                            style="color: var(--primary-svg); border: 2px solid var(--border-mode-color) !important;">Stay type</a>
+                                        <a href="#" class="me-2 mt-3 mt-sm-0 px-4 py-3 d-inline-block border border-2 rounded-pill"
+                                            style="color: var(--primary-svg); border:2px solid  var(--border-mode-color) !important;">Beds & Baths</a>
+                                        <a href="#" class="me-2 mt-3 mt-sm-0 px-4 py-3 d-inline-block border border-2 rounded-pill"
+                                            style="color: var(--primary-svg); border:2px solid  var(--border-mode-color) !important;">
+                                            <span><svg width="20" height="20" class="me-3" viewBox="0 0 20 20"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10 1V19" stroke="var(--primary-svg)" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M1 10L19 10" stroke="var(--primary-svg)" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                            <span>Filters</span>
+                                        </a>
+                                    </div>
+                                    <div
+                                        class="container-fluid p-0 napa d-flex justify-content-between align-items-center mt-4">
+                                        <h1 class="fw-bold">Napa, CA</h1>
+                                        <div>
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example"
+                                                style="background-color: var(--napa-btn-bg);">
+                                                <button type="button" class="btn px-4 py-2">
+                                                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.96289 1L0.999718 7.96317L7.96289 14.9263"
+                                                            stroke="var(--mode-color)" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                                <button type="button" class="btn px-4 py-2">
+                                                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1 1L7.96317 7.96317L1 14.9263"
+                                                            stroke="var(--mode-color)" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 -->
+                                    <div class="container p-0 mt-4">
+                                        <div class="card mb-3 border-0">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="../img/Estate/Photos.png" class="img-fluid rounded-start"
+                                                        alt="...">
+                                                </div>
+                                                <div class="col-md-8 pt-md-0 pt-4">
+                                                    <div class="card-body p-0 ps-4">
+                                                        <div class="container-fluid row p-0 m-0">
+                                                            <div class="col-6 p-0">
+                                                                <span class="badge fw-light"
+                                                                    style="color: var(--mode-color-2); background-color: var(--badge-mode-color); border: 2px solid var(--badge-mode-border);">Whole
+                                                                    house</span>
+                                                            </div>
+                                                            <div class="col-6 text-end ">
+                                                                <span class="me-3">
+                                                                    <svg class="heart-svg active" width="22" height="20"
+                                                                        viewBox="0 0 22 20" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M1.77216 1.77216C-0.59072 4.13503 -0.590718 7.96602 1.77216 10.3289L10.937 19.4937L11 19.4307L11.0631 19.4938L20.2279 10.329C22.5908 7.96609 22.5908 4.13511 20.2279 1.77223C17.865 -0.590642 14.034 -0.59064 11.6712 1.77224L11.3536 2.08978C11.1584 2.28505 10.8418 2.28505 10.6465 2.08978L10.3289 1.77216C7.96601 -0.590719 4.13503 -0.590718 1.77216 1.77216Z"
+                                                                            fill="var(--heart-mode-color)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="ps-2 two-dot">
+                                                                    <svg width="14" height="4" viewBox="0 0 14 4"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="2" cy="2" r="2"
+                                                                            transform="rotate(-90 2 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                        <circle cx="12" cy="2" r="2"
+                                                                            transform="rotate(-90 12 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <h5 class="mt-2" style="color: var(--mode-color);">Example header for stay title.</h5>
+                                                        <p class="card-text text-muted">3 Bed . 2 Bath</p>
+                                                        <div class="row">
+                                                            <p class="card-text text-muted col-6">
+                                                                <span class="star-svg me-2">
+                                                                    <svg width="20" height="21" viewBox="0 0 20 21"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M9.30788 0.657971C9.56452 0.0432001 10.4355 0.0431999 10.6921 0.657971L12.8937 5.93186C12.9963 6.17755 13.2214 6.35045 13.4852 6.38616L19.2876 7.17148C19.9378 7.25948 20.1695 8.08097 19.6612 8.49579L15.1809 12.1518C14.9594 12.3326 14.86 12.6235 14.9244 12.902L16.3568 19.0919C16.5119 19.762 15.7583 20.27 15.1953 19.8748L10.4309 16.5309C10.1723 16.3494 9.82771 16.3494 9.56914 16.5309L4.8047 19.8749C4.24167 20.27 3.48807 19.7621 3.64315 19.0919L5.07545 12.902C5.1399 12.6235 5.04042 12.3326 4.81895 12.1518L0.338802 8.49578C-0.169523 8.08096 0.0622221 7.25948 0.712396 7.17149L6.51479 6.38616C6.77862 6.35045 7.00375 6.17755 7.10631 5.93186L9.30788 0.657971Z"
+                                                                            fill="var(--star-svg)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <small>3.28</small>
+                                                            </p>
+                                                            <p class="text-muted col-6 text-end">
+                                                                <small>night</small>
+                                                                <span class="fw-bold ms-2"
+                                                                    style="color: var(--mode-color);">$285</span>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 2 -->
+                                    <div class="container p-0 mt-4">
+                                        <div class="card mb-3 border-0">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="../img/Estate/Photos-1.png" class="img-fluid rounded-start"
+                                                        alt="...">
+                                                </div>
+                                                <div class="col-md-8 pt-md-0 pt-4">
+                                                    <div class="card-body p-0 ps-4">
+                                                        <div class="container-fluid row p-0 m-0">
+                                                            <div class="col-6 p-0">
+                                                                <span class="badge fw-light"
+                                                                    style="color: var(--mode-color-2); background-color: var(--badge-mode-color); border: 2px solid var(--badge-mode-border);">Whole
+                                                                    house</span>
+                                                            </div>
+                                                            <div class="col-6 text-end ">
+                                                                <span class="me-3">
+                                                                    <svg class="heart-svg" width="22" height="20"
+                                                                        viewBox="0 0 22 20" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M1.77216 1.77216C-0.59072 4.13503 -0.590718 7.96602 1.77216 10.3289L10.937 19.4937L11 19.4307L11.0631 19.4938L20.2279 10.329C22.5908 7.96609 22.5908 4.13511 20.2279 1.77223C17.865 -0.590642 14.034 -0.59064 11.6712 1.77224L11.3536 2.08978C11.1584 2.28505 10.8418 2.28505 10.6465 2.08978L10.3289 1.77216C7.96601 -0.590719 4.13503 -0.590718 1.77216 1.77216Z"
+                                                                            fill="var(--heart-mode-color)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="ps-2 two-dot">
+                                                                    <svg width="14" height="4" viewBox="0 0 14 4"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="2" cy="2" r="2"
+                                                                            transform="rotate(-90 2 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                        <circle cx="12" cy="2" r="2"
+                                                                            transform="rotate(-90 12 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <h5 class="mt-2" style="color: var(--mode-color);">Example header for stay title.</h5>
+                                                        <p class="card-text text-muted">3 Bed . 2 Bath</p>
+                                                        <div class="row">
+                                                            <p class="card-text text-muted col-6">
+                                                                <span class="star-svg me-2">
+                                                                    <svg width="20" height="21" viewBox="0 0 20 21"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M9.30788 0.657971C9.56452 0.0432001 10.4355 0.0431999 10.6921 0.657971L12.8937 5.93186C12.9963 6.17755 13.2214 6.35045 13.4852 6.38616L19.2876 7.17148C19.9378 7.25948 20.1695 8.08097 19.6612 8.49579L15.1809 12.1518C14.9594 12.3326 14.86 12.6235 14.9244 12.902L16.3568 19.0919C16.5119 19.762 15.7583 20.27 15.1953 19.8748L10.4309 16.5309C10.1723 16.3494 9.82771 16.3494 9.56914 16.5309L4.8047 19.8749C4.24167 20.27 3.48807 19.7621 3.64315 19.0919L5.07545 12.902C5.1399 12.6235 5.04042 12.3326 4.81895 12.1518L0.338802 8.49578C-0.169523 8.08096 0.0622221 7.25948 0.712396 7.17149L6.51479 6.38616C6.77862 6.35045 7.00375 6.17755 7.10631 5.93186L9.30788 0.657971Z"
+                                                                            fill="var(--star-svg)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <small>3.28</small>
+                                                            </p>
+                                                            <p class="text-muted col-6 text-end">
+                                                                <small>night</small>
+                                                                <span class="fw-bold ms-2"
+                                                                    style="color: var(--mode-color);">$285</span>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 3 -->
+                                    <div class="container p-0 mt-4">
+                                        <div class="card mb-3 border-0">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="../img/Estate/Photos-2.png" class="img-fluid rounded-start"
+                                                        alt="...">
+                                                </div>
+                                                <div class="col-md-8 pt-md-0 pt-4">
+                                                    <div class="card-body p-0 ps-4">
+                                                        <div class="container-fluid row p-0 m-0">
+                                                            <div class="col-6 p-0">
+                                                                <span class="badge fw-light"
+                                                                    style="color: var(--mode-color-2); background-color: var(--badge-mode-color); border: 2px solid var(--badge-mode-border);">Whole
+                                                                    house</span>
+                                                            </div>
+                                                            <div class="col-6 text-end ">
+                                                                <span class="me-3">
+                                                                    <svg class="heart-svg" width="22" height="20"
+                                                                        viewBox="0 0 22 20" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M1.77216 1.77216C-0.59072 4.13503 -0.590718 7.96602 1.77216 10.3289L10.937 19.4937L11 19.4307L11.0631 19.4938L20.2279 10.329C22.5908 7.96609 22.5908 4.13511 20.2279 1.77223C17.865 -0.590642 14.034 -0.59064 11.6712 1.77224L11.3536 2.08978C11.1584 2.28505 10.8418 2.28505 10.6465 2.08978L10.3289 1.77216C7.96601 -0.590719 4.13503 -0.590718 1.77216 1.77216Z"
+                                                                            fill="var(--heart-mode-color)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="ps-2 two-dot">
+                                                                    <svg width="14" height="4" viewBox="0 0 14 4"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="2" cy="2" r="2"
+                                                                            transform="rotate(-90 2 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                        <circle cx="12" cy="2" r="2"
+                                                                            transform="rotate(-90 12 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <h5 class="mt-2"  style="color: var(--mode-color);">Example header for stay title.</h5>
+                                                        <p class="card-text text-muted">3 Bed . 2 Bath</p>
+                                                        <div class="row">
+                                                            <p class="card-text text-muted col-6">
+                                                                <span class="star-svg me-2">
+                                                                    <svg width="20" height="21" viewBox="0 0 20 21"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M9.30788 0.657971C9.56452 0.0432001 10.4355 0.0431999 10.6921 0.657971L12.8937 5.93186C12.9963 6.17755 13.2214 6.35045 13.4852 6.38616L19.2876 7.17148C19.9378 7.25948 20.1695 8.08097 19.6612 8.49579L15.1809 12.1518C14.9594 12.3326 14.86 12.6235 14.9244 12.902L16.3568 19.0919C16.5119 19.762 15.7583 20.27 15.1953 19.8748L10.4309 16.5309C10.1723 16.3494 9.82771 16.3494 9.56914 16.5309L4.8047 19.8749C4.24167 20.27 3.48807 19.7621 3.64315 19.0919L5.07545 12.902C5.1399 12.6235 5.04042 12.3326 4.81895 12.1518L0.338802 8.49578C-0.169523 8.08096 0.0622221 7.25948 0.712396 7.17149L6.51479 6.38616C6.77862 6.35045 7.00375 6.17755 7.10631 5.93186L9.30788 0.657971Z"
+                                                                            fill="var(--star-svg)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <small>3.28</small>
+                                                            </p>
+                                                            <p class="text-muted col-6 text-end">
+                                                                <small>night</small>
+                                                                <span class="fw-bold ms-2"
+                                                                    style="color: var(--mode-color);">$285</span>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 4 -->
+                                    <div class="container p-0 mt-4">
+                                        <div class="card mb-3 border-0">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="../img/Estate/Photos-3.png" class="img-fluid rounded-start"
+                                                        alt="...">
+                                                </div>
+                                                <div class="col-md-8 pt-md-0 pt-4">
+                                                    <div class="card-body p-0 ps-4">
+                                                        <div class="container-fluid row p-0 m-0">
+                                                            <div class="col-6 p-0">
+                                                                <span class="badge fw-light"
+                                                                    style="color: var(--mode-color-2); background-color: var(--badge-mode-color); border: 2px solid var(--badge-mode-border);">Whole
+                                                                    house</span>
+                                                            </div>
+                                                            <div class="col-6 text-end ">
+                                                                <span class="me-3">
+                                                                    <svg class="heart-svg " width="22" height="20"
+                                                                        viewBox="0 0 22 20" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M1.77216 1.77216C-0.59072 4.13503 -0.590718 7.96602 1.77216 10.3289L10.937 19.4937L11 19.4307L11.0631 19.4938L20.2279 10.329C22.5908 7.96609 22.5908 4.13511 20.2279 1.77223C17.865 -0.590642 14.034 -0.59064 11.6712 1.77224L11.3536 2.08978C11.1584 2.28505 10.8418 2.28505 10.6465 2.08978L10.3289 1.77216C7.96601 -0.590719 4.13503 -0.590718 1.77216 1.77216Z"
+                                                                            fill="var(--heart-mode-color)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="ps-2 two-dot">
+                                                                    <svg width="14" height="4" viewBox="0 0 14 4"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="2" cy="2" r="2"
+                                                                            transform="rotate(-90 2 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                        <circle cx="12" cy="2" r="2"
+                                                                            transform="rotate(-90 12 2)"
+                                                                            fill="var(--mode-color-3)" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <h5 class="mt-2"  style="color: var(--mode-color);">Example header for stay title.</h5>
+                                                        <p class="card-text text-muted">3 Bed . 2 Bath</p>
+                                                        <div class="row">
+                                                            <p class="card-text text-muted col-6">
+                                                                <span class="star-svg me-2">
+                                                                    <svg width="20" height="21" viewBox="0 0 20 21"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M9.30788 0.657971C9.56452 0.0432001 10.4355 0.0431999 10.6921 0.657971L12.8937 5.93186C12.9963 6.17755 13.2214 6.35045 13.4852 6.38616L19.2876 7.17148C19.9378 7.25948 20.1695 8.08097 19.6612 8.49579L15.1809 12.1518C14.9594 12.3326 14.86 12.6235 14.9244 12.902L16.3568 19.0919C16.5119 19.762 15.7583 20.27 15.1953 19.8748L10.4309 16.5309C10.1723 16.3494 9.82771 16.3494 9.56914 16.5309L4.8047 19.8749C4.24167 20.27 3.48807 19.7621 3.64315 19.0919L5.07545 12.902C5.1399 12.6235 5.04042 12.3326 4.81895 12.1518L0.338802 8.49578C-0.169523 8.08096 0.0622221 7.25948 0.712396 7.17149L6.51479 6.38616C6.77862 6.35045 7.00375 6.17755 7.10631 5.93186L9.30788 0.657971Z"
+                                                                            fill="var(--star-svg)" />
+                                                                    </svg>
+                                                                </span>
+                                                                <small>3.28</small>
+                                                            </p>
+                                                            <p class="text-muted col-6 text-end">
+                                                                <small>night</small>
+                                                                <span class="fw-bold ms-2"
+                                                                    style="color: var(--mode-color);">$285</span>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--  -->
+                                </div>
+
+                            </div>
+
+                            <!--  -->
+                            <div class="col-lg-6 dot-map">
+                                <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://mcpenation.com/">MCPE Nation</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:100%;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:100%;}.gmap_iframe {height:100%!important;}</style></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- @2 -->
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">2
+                    </div>
+                    <!-- @3 -->
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">3
+                    </div>
+                    <!-- @4 -->
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">4
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/estate.js"></script>
+</body>
+
+</html>
