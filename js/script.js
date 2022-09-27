@@ -38,19 +38,31 @@ heartSvgs.forEach((e)=>{
         })
 })
 
+
+
+$(document).on('click', 'ul.tab-links li', function(){
+    $(this).addClass('active').siblings().removeClass('active')
+})
+
+
+// 
+
+ $('.search-icon,.nav-close-btn').click(function(){
+    $('.navbar-form').toggleClass("show");
+ })
+
+// 
+
+ $('.noti-icon').click(function(){
+    $('.submenu').toggleClass("show");
+ })
+
+
+
+
 // 
     // Mouse Move Animation
 
-    document.querySelector('.hero-main').addEventListener('mousemove', (e) => {
-        let layerAni = document.querySelectorAll('.hero-ani svg');
-        layerAni.forEach((layer) => {
-            const speed = Math.floor((Math.random() * 10) + 1)
-            const x = (window.innerWidth - e.pageX * speed) / 120;
-            const y = (window.innerHeight - e.pageY * speed) / 120;
-            layer.style.transform = `translate(${x}px, ${y}px)`;
-        })
-    })
-    // 
 
     $('.get-started').mousemove(function(e){
         const x = (window.innerWidth - e.pageX)/20 ;
@@ -58,8 +70,22 @@ heartSvgs.forEach((e)=>{
             $('.get-started').css('background-position', `${x}px ${y}px`)
     })
 
+
     // 
 })
 
+// Mouse Move Animation
 
+const hero = document.querySelector('.hero-main');
 
+if(hero){
+    hero.addEventListener('mousemove', (e) => {
+    let layerAni = document.querySelectorAll('.hero-ani svg');
+    layerAni.forEach((layer) => {
+        const speed = Math.floor((Math.random() * 10) + 1)
+        const x = (window.innerWidth - e.pageX * speed) / 120;
+        const y = (window.innerHeight - e.pageY * speed) / 120;
+        layer.style.transform = `translate(${x}px, ${y}px)`;
+    })
+})
+}

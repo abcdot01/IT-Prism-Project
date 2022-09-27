@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It-Prism File Management Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/file-management.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+
+    <div class="mode position-fixed end-0 top-50" style="z-index: 120;">
+        <span class="d-inline-block p-3 rounded-3 mb-3 dark" role="button" title="Enable light mode">
+            <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.7312 17.6188C11.8951 17.6188 7.16398 12.8003 7.16398 6.8564C7.16398 5.10907 7.57283 3.459 8.29842 2C4.0622 3.40206 1 7.45561 1 12.2376C1 18.1815 5.73111 23 11.5672 23C15.6877 23 19.2573 20.5981 21 17.094C19.9707 17.4347 18.8721 17.6188 17.7312 17.6188Z"
+                    stroke="#fcfcfc" stroke-width="2" />
+            </svg>
+        </span>
+        <span class="d-inline-block p-3 rounded-3 mb-3 light" role="button" title="Enable dark mode">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="6" stroke="#111" stroke-width="2" />
+                <path d="M12 1V2M12 23L12 22" stroke="#111" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M4.22168 19.7783L4.92879 19.0712M19.778 4.22197L19.0709 4.92908" stroke="#111"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.22168 4.22168L4.92879 4.92879M19.778 19.778L19.0709 19.0709" stroke="#111"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M1 12H2M23 12L22 12" stroke="#111" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </span>
+    </div>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid row justify-content-start position-relative pt-3">
+            <div class="col-1 ps-sm-4">
+                <a class="navbar-brand" href="#">
+                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14.8711 2.85872C20.5201 -0.286322 27.4799 -0.286322 33.1289 2.85872L38.8711 6.05562C44.5201 9.20066 48 15.0129 48 21.303V27.6968C48 33.9869 44.5201 39.7992 38.8711 42.9442L33.1289 46.1411C27.4799 49.2862 20.5201 49.2862 14.8711 46.1411L9.12893 42.9442C3.47993 39.7992 0 33.9869 0 27.6968V21.303C0 15.0129 3.47993 9.20066 9.12893 6.05562L14.8711 2.85872ZM23.7701 10.8535C20.6942 10.6948 20.6942 10.6962 20.6941 10.6975L20.6939 10.7003L20.6936 10.7064L20.693 10.7204L20.6915 10.7552C20.6905 10.7816 20.6894 10.814 20.6885 10.8522C20.6868 10.9286 20.6856 11.0285 20.6869 11.1494C20.6894 11.3906 20.7012 11.7182 20.7364 12.1117C20.8062 12.8921 20.9711 13.9666 21.3579 15.1535C22.1362 17.5418 23.8759 20.53 27.6177 22.2704C29.3773 23.0888 30.2242 24.4572 30.6572 25.7857C30.8761 26.4573 30.973 27.0813 31.0136 27.5347C31.0336 27.7583 31.0391 27.9314 31.0402 28.0368C31.0407 28.0892 31.0401 28.124 31.0398 28.139C31.0396 28.1465 31.0395 28.1489 31.0396 28.146L31.04 28.1377L31.0403 28.1304L31.0405 28.126L31.0407 28.1236C31.0407 28.1224 31.0408 28.1211 34.1167 28.2798C37.1925 28.4385 37.1926 28.4372 37.1927 28.4358L37.1928 28.433L37.1931 28.4269L37.1938 28.413L37.1953 28.3781C37.1958 28.3652 37.1963 28.3508 37.1968 28.335C37.1973 28.3186 37.1978 28.3006 37.1982 28.2811C37.2 28.2047 37.2011 28.1048 37.1999 27.984C37.1974 27.7428 37.1856 27.4151 37.1504 27.0217C37.0805 26.2412 36.9156 25.1667 36.5288 23.9799C35.7505 21.5916 34.0108 18.6034 30.2691 16.863C28.5095 16.0445 27.6625 14.6762 27.2295 13.3476C27.0107 12.6761 26.9137 12.052 26.8732 11.5986C26.8532 11.3751 26.8477 11.2019 26.8466 11.0966C26.846 11.0442 26.8466 11.0093 26.847 10.9943L26.8471 10.9873C26.8472 10.9861 26.8472 10.9858 26.8472 10.9865M23.7701 10.8535C26.8459 11.0122 26.846 11.011 26.8461 11.0097ZM26.8461 11.0097L26.8462 11.0073ZM26.8462 11.0073L26.8464 11.0029ZM26.8464 11.0029L26.8468 10.9956ZM26.8468 10.9956L26.8471 10.9873ZM13.7113 20.916C10.6355 20.7573 10.6354 20.7587 10.6353 20.76L10.6352 20.7628L10.6349 20.7689L10.6342 20.7829L10.6327 20.8177C10.6317 20.8441 10.6307 20.8765 10.6298 20.9147C10.628 20.9911 10.6269 21.091 10.6281 21.2119C10.6306 21.4531 10.6424 21.7808 10.6776 22.1742C10.7475 22.9546 10.9123 24.0291 11.2991 25.216C12.0775 27.6043 13.8172 30.5925 17.5589 32.3328C19.3185 33.1513 20.1655 34.5197 20.5985 35.8482C20.8173 36.5198 20.9143 37.1438 20.9548 37.5972C20.9748 37.8208 20.9803 37.9939 20.9814 38.0992C20.9819 38.1517 20.9814 38.1865 20.981 38.2015C20.9809 38.2089 20.9807 38.2114 20.9809 38.2085L20.9812 38.2002L20.9816 38.1929L20.9818 38.1885L20.9819 38.1861C20.982 38.1849 20.982 38.1836 24.0579 38.3423C27.1338 38.501 27.1338 38.4997 27.1339 38.4983L27.1341 38.4955L27.1344 38.4894L27.135 38.4755L27.1365 38.4406C27.1375 38.4143 27.1386 38.3818 27.1395 38.3436C27.1412 38.2672 27.1423 38.1673 27.1411 38.0464C27.1386 37.8053 27.1268 37.4776 27.0916 37.0842C27.0218 36.3037 26.8569 35.2292 26.4701 34.0424C25.6918 31.6541 23.9521 28.6659 20.2103 26.9255C18.4507 26.107 17.6037 24.7387 17.1708 23.4101C16.9519 22.7386 16.855 22.1145 16.8144 21.6611C16.7944 21.4376 16.7889 21.2645 16.7878 21.1591C16.7873 21.1067 16.7879 21.0718 16.7882 21.0568L16.7884 21.0498L16.788 21.0582L16.7877 21.0654L16.7875 21.0698L16.7873 21.0722C16.7873 21.0735 16.7872 21.0747 13.7113 20.916Z"
+                            fill="var(--mode-primary)" />
+                    </svg>
+                </a>
+
+            </div>
+
+            <form class="col-xl-6 col-lg-5 ps-lg-4 d-lg-block col-12 p-0 navbar-form " role="search">
+                <div class="nav-form position-relative d-flex align-items-center py-1 px-4 rounded-4"
+                    style="background-color: var(--mode-bg);">
+                    <span class="nav-search-icon p-2">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                                stroke="var(--gray)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 21L17 17" stroke="var(--gray)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <input class="form-control me-2 border-0 shadow-none bg-transparent" type="text"
+                        placeholder="Search" aria-label="Search" style="color: var(--gray);">
+                    <span role="button" class="nav-close-btn position-absolute top-50 end-0 translate-middle d-lg-none">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 6L18.7742 18.7742" stroke="var(--mode-black)" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6 18.7742L18.7742 5.99998" stroke="var(--mode-black)" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </div>
+            </form>
+
+            <div class="col-xl-4 col-lg-5 col-11 text-end p-0">
+                <a href="#" class="mx-2 search-icon nav-icons d-lg-none"
+                    style="border: 2px solid var(--nav-icon); color: var(--nav-icon);">
+                    <span>
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                                stroke="var(--nav-icon)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 21L17 17" stroke="var(--nav-icon)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a>
+                <a href="#" class="mx-2 nav-icons" style="border: 2px solid var(--nav-icon); color: var(--nav-icon);">
+                    <span>
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="13" cy="13" r="4" stroke="var(--nav-icon)" stroke-width="2" />
+                            <path
+                                d="M11.2844 2.86293C12.061 1.56696 13.939 1.56696 14.7156 2.86293L15.4213 4.0407C15.8742 4.79649 16.7684 5.16686 17.6231 4.95268L18.9549 4.61892C20.4204 4.25166 21.7483 5.57958 21.3811 7.0451L21.0473 8.37695C20.8331 9.23162 21.2035 10.1258 21.9593 10.5787L23.1371 11.2844C24.433 12.061 24.433 13.939 23.1371 14.7156L21.9593 15.4213C21.2035 15.8742 20.8331 16.7684 21.0473 17.6231L21.3811 18.9549C21.7483 20.4204 20.4204 21.7483 18.9549 21.3811L17.6231 21.0473C16.7684 20.8331 15.8742 21.2035 15.4213 21.9593L14.7156 23.1371C13.939 24.433 12.061 24.433 11.2844 23.1371L10.5787 21.9593C10.1258 21.2035 9.23162 20.8331 8.37695 21.0473L7.04509 21.3811C5.57958 21.7483 4.25166 20.4204 4.61892 18.9549L4.95268 17.6231C5.16686 16.7684 4.79649 15.8742 4.04069 15.4213L2.86293 14.7156C1.56696 13.939 1.56696 12.061 2.86293 11.2844L4.0407 10.5787C4.79649 10.1258 5.16686 9.23162 4.95268 8.37695L4.61892 7.04509C4.25166 5.57958 5.57958 4.25166 7.0451 4.61892L8.37695 4.95268C9.23162 5.16686 10.1258 4.79649 10.5787 4.04069L11.2844 2.86293Z"
+                                stroke="var(--nav-icon)" stroke-width="2" />
+                        </svg>
+                    </span>
+                </a>
+                <div class="notification d-inline-block position-relative">
+                    <a href="#" class="mx-2  nav-icons noti-icon"
+                        style="border: 2px solid var(--nav-icon); color: var(--nav-icon);">
+                        <span>
+                            <svg width="26" height="24" viewBox="0 0 26 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.3333 8.51449C20.3333 6.65413 19.5607 4.86997 18.1855 3.5545C16.8102 2.23902 14.9449 1.5 13 1.5C11.0551 1.5 9.18982 2.23902 7.81455 3.5545C6.43928 4.86997 5.66667 6.65413 5.66667 8.51449C5.66667 14.4484 3.21304 17.309 1.86406 18.4333C1.6615 18.6021 1.79337 19.0362 2.05706 19.0362H8.52214C8.6391 19.0362 8.74073 19.1154 8.77521 19.2271C8.99911 19.9529 9.99866 22.5 13 22.5C16.0013 22.5 17.0009 19.9529 17.2248 19.2271C17.2593 19.1154 17.3609 19.0362 17.4779 19.0362H23.9429C24.2066 19.0362 24.3385 18.6021 24.1359 18.4333C22.787 17.309 20.3333 14.4484 20.3333 8.51449Z"
+                                    stroke="var(--nav-icon)" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="ms-2 d-none d-sm-inline-block" style="color: var(--mode-black);">18</span>
+                    </a>
+
+                    <div class="noti-submenu submenu position-absolute end-0 d-block d-sm-none">
+                        <ul class="p-0 m-0">
+                            <li style="--k:1;"><a href="#">Notification - 1</a></li>
+                            <li style="--k:2;"><a href="#">Notification - 1</a></li>
+                            <li style="--k:3;"><a href="#">Notification - 1</a></li>
+                            <li style="--k:4;"><a href="#">Notification - 1</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="user d-inline-block ms-0 ms-sm-4 position-relative" role="button">
+                    <small class="fw-semibold d-none d-sm-inline-block"
+                        style="color: var(--nav-user-name);">Pearl</small>
+                    <a href="#" class="ms-2 user-icon"><img width="50px" height="auto"
+                            src="../img/Management/Avatar-1.png" alt=""></a>
+                    <span class="mobile-menu-guide position-absolute">Pearl</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navbar Ends -->
+
+    <!-- Body Content  -->
+    <div class="body-main mt-5 ps-4 ps-sm-0 p-0">
+        <div class="container-fluid m-0 row justify-content-end">
+            <!-- Side Bar -->
+            <div class="col-2 m-0 p-0 position-absolute start-0 sidebar">
+                <aside>
+                    <div class="container p-0 ps-2 ps-sm-3">
+                        <!-- Upload Btn -->
+                        <div class="position-relative">
+
+                            <a href="#" class="rounded-3 d-block text-center mb-5 w-200 upload-btn"
+                                style="background-color: var(--mode-primary); padding: var(--pixel-20) 0;">
+                                <span class="me-xl-3">
+                                    <svg width="22" height="24" viewBox="0 0 22 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M1.5 12C1 10.5 1 9 1 7.95636C1 4.47818 4.11447 1 7.95636 1C10.5312 1 12.7793 2.39892 13.9821 4.47818H14.9127C17.7941 4.47818 20.5 6.5 20.5 9C20.5 10 20.5 11 20 12"
+                                            stroke="var(--reverse-mode-black)" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M14.5829 14.6685L10.4996 10.7502L6.41622 14.6685"
+                                            stroke="var(--reverse-mode-black)" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M10.4995 11.7808V22.7808" stroke="var(--reverse-mode-black)"
+                                            stroke-width="2" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                                <small class="fw-semibold ms-2" style="color: var(--reverse-mode-black);">Upload</small>
+                            </a>
+
+                            <span class="mobile-menu-guide position-absolute">Upload</span>
+                        </div>
+                        <!--  -->
+
+                        <ul class="tab-links m-0 p-0">
+                            <li>
+                                <a href="#" class="sidebar-links my-3" style="color: var(--gray);" data-toggle="tab">
+                                    <span>
+                                        <svg width="22" height="24" viewBox="0 0 22 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M1 9.88014C1 8.92659 1.45332 8.02983 2.22115 7.46442L11 1L19.7788 7.46443C20.5467 8.02983 21 8.92659 21 9.88014V20.5C21 21.8807 19.8807 23 18.5 23H15C14.4477 23 14 22.5523 14 22V16C14 15.7239 13.7761 15.5 13.5 15.5H8.5C8.22386 15.5 8 15.7239 8 16V22C8 22.5523 7.55228 23 7 23H3.5C2.11929 23 1 21.8807 1 20.5V9.88014Z"
+                                                stroke="var(--gray)" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="fw-bold ms-3">Home</span>
+                                </a>
+                                <span class="mobile-menu-guide position-absolute">Home</span>
+                            </li>
+                            <li class="active">
+                                <a href="#" class="sidebar-links my-3" style="color: var(--gray);" data-toggle="tab">
+                                    <span>
+                                        <svg width="17" height="24" viewBox="0 0 17 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10 3C10 2.44772 10.4477 2 11 2H12.6876C12.9865 2 13.2697 2.13365 13.4596 2.36436L15.772 5.1727C15.9194 5.35173 16 5.57644 16 5.80835V9C16 9.55228 15.5523 10 15 10H11C10.4477 10 10 9.55229 10 9V3Z"
+                                                stroke="var(--gray)" stroke-width="2" />
+                                            <path
+                                                d="M10 16C10 15.4477 10.4477 15 11 15H12.6876C12.9865 15 13.2697 15.1337 13.4596 15.3644L15.772 18.1727C15.9194 18.3517 16 18.5764 16 18.8083V22C16 22.5523 15.5523 23 15 23H11C10.4477 23 10 22.5523 10 22V16Z"
+                                                stroke="var(--gray)" stroke-width="2" />
+                                            <path d="M1 1V5.5M5.5 18.5H1V5.5M1 5.5H5.5" stroke="var(--gray)"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </span>
+                                    <span class="fw-bold ms-3">All Files</span>
+                                </a>
+                                <span class="mobile-menu-guide position-absolute">All Files</span>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-links my-3" style="color: var(--gray);" data-toggle="tab">
+                                    <span>
+                                        <svg width="22" height="23" viewBox="0 0 22 23" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.3079 1.65797C10.5645 1.0432 11.4355 1.0432 11.6921 1.65797L13.8937 6.93186C13.9962 7.17755 14.2214 7.35045 14.4852 7.38616L20.2876 8.17148C20.9378 8.25948 21.1695 9.08097 20.6612 9.49579L16.1809 13.1518C15.9594 13.3326 15.86 13.6235 15.9244 13.902L17.3568 20.0919C17.5119 20.762 16.7583 21.27 16.1953 20.8748L11.4309 17.5309C11.1723 17.3494 10.8277 17.3494 10.5691 17.5309L5.8047 20.8749C5.24167 21.27 4.48807 20.7621 4.64315 20.0919L6.07545 13.902C6.1399 13.6235 6.04042 13.3326 5.81895 13.1518L1.3388 9.49578C0.830477 9.08096 1.06222 8.25948 1.7124 8.17149L7.51479 7.38616C7.77862 7.35045 8.00375 7.17755 8.10631 6.93186L10.3079 1.65797Z"
+                                                stroke="var(--gray)" stroke-width="2" stroke-miterlimit="3.3292"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </span>
+                                    <span class="fw-bold ms-3">Starred</span>
+                                </a>
+                                <span class="mobile-menu-guide position-absolute">Starred</span>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-links my-3" style="color: var(--gray);" data-toggle="tab">
+                                    <span>
+                                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 2C1 1.44772 1.44772 1 2 1H20C20.5523 1 21 1.44772 21 2V6H1V2Z"
+                                                stroke="var(--gray)" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M2 6H20V18C20 18.5523 19.5523 19 19 19H3C2.44772 19 2 18.5523 2 18V6Z"
+                                                stroke="var(--gray)" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M9 10C8.44772 10 8 10.4477 8 11C8 11.5523 8.44772 12 9 12V10ZM13 12C13.5523 12 14 11.5523 14 11C14 10.4477 13.5523 10 13 10V12ZM9 12H13V10H9V12Z"
+                                                fill="var(--gray)" />
+                                        </svg>
+                                    </span>
+                                    <span class="fw-bold ms-3">Archived</span>
+                                </a>
+                                <span class="mobile-menu-guide position-absolute">Archived</span>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </aside>
+            </div>
+            <!-- Body -->
+            <div class="col-10 m-0 ms-5 p-o">
+                <div class="container-fluid px-sm-5 px-2">
+                    <!-- Div One -->
+                    <div class="row">
+                        <!-- Card -1 -->
+                        <div class="col-lg-4 col-md-6 ps-0">
+                            <div class="card border-0 rounded-4" style="background-color: var(--mode-bg);">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title">
+                                        <span class="rounded-4 d-inline-block"
+                                            style="padding: var(--pixel-20); background-color: var(--mode-primary);">
+                                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M25 29.6673H7C5.89543 29.6673 5 28.7719 5 27.6673V4.33399C5 3.22942 5.89543 2.33398 7 2.33398H13.8947C15.5516 2.33398 16.8947 3.67713 16.8947 5.33398V10.5006C16.8947 11.8814 18.014 13.0007 19.3947 13.0007H24C25.6569 13.0007 27 14.3438 27 16.0007V27.6673C27 28.7719 26.1046 29.6673 25 29.6673Z"
+                                                    stroke="var(--reverse-mode-black)" stroke-width="2" />
+                                                <path
+                                                    d="M25 29.6673H7C5.89543 29.6673 5 28.7719 5 27.6673V4.33399C5 3.22942 5.89543 2.33398 7 2.33398H13.7076C16.0674 2.33398 18.3069 3.37585 19.8269 5.1809L25.1193 11.4656C26.3339 12.908 27 14.733 27 16.6187V27.6673C27 28.7719 26.1046 29.6673 25 29.6673Z"
+                                                    stroke="var(--reverse-mode-black)" stroke-width="2" />
+                                            </svg>
+                                        </span>
+                                    </h5>
+                                    <h5 class="my-3">Documents</h5>
+                                    <div class="progress" style="height: var(--pixel-12);">
+                                        <div class="progress-bar"
+                                            style="background-color: var(--mode-primary); width: 29%" role="progressbar"
+                                            aria-label="Success example" aria-valuenow="29" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                    </div>
+                                    <span class="fw-bold" style="color: var(--mode-black);">29%</span> <small
+                                        class="ms-2 fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">23gb of 80gb
+                                        Used</small>
+                                    <!--  -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card - 2 -->
+                        <div class="col-lg-4 col-md-6 ps-0 mt-4 mt-md-0">
+                            <div class="card border-0 rounded-4" style="background-color: var(--mode-bg);">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title">
+                                        <span class="rounded-4 d-inline-block"
+                                            style="padding: var(--pixel-20); background-color: var(--mode-blue);">
+                                            <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M2 6C2 4.89543 2.89543 4 4 4H29.3333C30.4379 4 31.3333 4.89543 31.3333 6V26C31.3333 27.1046 30.4379 28 29.3333 28H4C2.89543 28 2 27.1046 2 26V6Z"
+                                                    stroke="var(--reverse-mode-black)" stroke-width="2.5"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M8 27.9993L22.7221 12.0504C23.4399 11.2728 24.6391 11.189 25.4582 11.8591L31.3333 16.666"
+                                                    stroke="var(--reverse-mode-black)" stroke-width="2.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M2 13.334L12.3333 23.6673" stroke="var(--reverse-mode-black)"
+                                                    stroke-width="2.5" />
+                                                <path
+                                                    d="M17.3327 17.334C17.3327 16.0007 14.9449 13.334 11.9993 13.334C9.05383 13.334 6.66602 16.0007 6.66602 17.334"
+                                                    stroke="var(--reverse-mode-black)" stroke-width="2.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                    </h5>
+                                    <h5 class="my-3">Images</h5>
+                                    <div class="progress" style="height: var(--pixel-12);">
+                                        <div class="progress-bar" style="background-color: var(--mode-blue); width: 29%"
+                                            role="progressbar" aria-label="Success example" aria-valuenow="29"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span class="fw-bold" style="color: var(--mode-black);">29%</span> <small
+                                        class="ms-2 fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">23gb of 80gb
+                                        Used</small>
+                                    <!--  -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card - 3 -->
+                        <div class="col-lg-4 col-md-12 ps-0 mt-4 mt-lg-0">
+                            <div class="card border-0 rounded-4" style="background-color: var(--mode-bg);">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title">
+                                        <span class="rounded-4 d-inline-block"
+                                            style="padding: var(--pixel-20); background-color: var(--mode-green);">
+                                            <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.82287 8H19.1784C20.553 8 21.6673 9.02335 21.6673 10.2857V13.6L28.334 9.33333V22.6667L21.6673 18.4V21.7143C21.6673 22.9767 20.553 24 19.1784 24H6.82287C5.4483 24 4.33398 22.9767 4.33398 21.7143V10.2857C4.33398 9.02335 5.4483 8 6.82287 8Z"
+                                                    stroke="var(--reverse-mode-black)" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M11 8V24" stroke="var(--reverse-mode-black)"
+                                                    stroke-width="2" />
+                                            </svg>
+
+                                        </span>
+                                    </h5>
+                                    <h5 class="my-3">Video</h5>
+                                    <div class="progress" style="height: var(--pixel-12);">
+                                        <div class="progress-bar"
+                                            style="background-color: var(--mode-green); width: 29%" role="progressbar"
+                                            aria-label="Success example" aria-valuenow="29" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                    </div>
+                                    <span class="fw-bold" style="color: var(--mode-black);">29%</span> <small
+                                        class="ms-2 fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">23gb of 80gb
+                                        Used</small>
+                                    <!--  -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card End -->
+                    </div>
+
+
+                    <!-- Div Two -->
+                    <div class="mt-5 container-fluid p-0 m-0">
+                        <h1 class="fw-bold" style="color: var(--mode-black);">Recent Files</h1>
+                        <!-- <table class="table "> -->
+                        <div class="custom-table">
+
+                            <!-- <thead> -->
+                            <!-- <tr> -->
+                            <div class="row p-0 custom-table-head overflow-hidden">
+                                <div class="col-4 col-sm-3 p-0"> <small class="fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">Name</small></div>
+                                <div class="col-3 p-0 d-none d-sm-block"> <small class="fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">Date Created</small>
+                                </div>
+                                <div class="col-4 col-sm-3 p-0"> <small class="fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">Size</small></div>
+                                <div class="col-4 col-sm-3 p-0 text-end"> <small class="fw-semibold"
+                                        style="font-size: var(--pixel-12); color: var(--gray-2);">Shared with</small>
+                                </div>
+                            </div>
+                            <!-- </tr> -->
+                            <!-- </thead> -->
+
+                            <!-- <tbody> -->
+                            <div class="container-fluid p-0 custom-table-body mb-5">
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="22" height="22" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M19.7733 23.9173H6.25391C5.14934 23.9173 4.25391 23.0219 4.25391 21.9173V4.08399C4.25391 2.97942 5.14934 2.08398 6.25391 2.08398H10.5546C12.2114 2.08398 13.5546 3.42713 13.5546 5.08398V8.25065C13.5546 9.63136 14.6739 10.7507 16.0546 10.7507H18.7733C20.4301 10.7507 21.7733 12.0938 21.7733 13.7507V21.9173C21.7733 23.0219 20.8778 23.9173 19.7733 23.9173Z"
+                                                    stroke="var(--mode-primary)" stroke-width="2" />
+                                                <path
+                                                    d="M19.7733 23.9173H6.25391C5.14934 23.9173 4.25391 23.0219 4.25391 21.9173V4.08399C4.25391 2.97942 5.14934 2.08398 6.25391 2.08398H10.3701C12.7286 2.08398 14.9669 3.12465 16.4869 4.92791L19.89 8.96511C21.1062 10.4079 21.7733 12.2342 21.7733 14.1212V21.9173C21.7733 23.0219 20.8778 23.9173 19.7733 23.9173Z"
+                                                    stroke="var(--mode-primary)" stroke-width="2" />
+                                            </svg>
+                                        </span>
+                                        <small style="color: var(--mode-black);">file3.txt
+                                        </small>
+
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">April 4, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">24kb
+                                        </small>
+                                    </div>
+                                    <div class=" col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -30px;"><img class="table-img"
+                                                src="../img/Management/Avatar-3.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: -15px;"><img class="table-img"
+                                                src="../img/Management/Avatar-4.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-2.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="22" height="22" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.08398 5.25C1.08398 4.14543 1.97941 3.25 3.08398 3.25H22.941C24.0456 3.25 24.941 4.14543 24.941 5.25V20.75C24.941 21.8546 24.0456 22.75 22.941 22.75H3.08398C1.97942 22.75 1.08398 21.8546 1.08398 20.75V5.25Z"
+                                                    stroke="var(--mode-blue)" stroke-width="2"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.96484 22.7493L17.7004 10.0484C18.4181 9.27175 19.6163 9.18795 20.4351 9.85718L24.942 13.541"
+                                                    stroke="var(--mode-blue)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.08398 10.834L9.48816 19.2298" stroke="var(--mode-blue)"
+                                                    stroke-width="2" />
+                                                <path
+                                                    d="M13.5542 14.084C13.5542 13.0007 11.6122 10.834 9.21654 10.834C6.82093 10.834 4.87891 13.0007 4.87891 14.084"
+                                                    stroke="var(--mode-blue)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                        <small style="color: var(--mode-black);">Image.jpg
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">April 3, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">324kb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -15px;"><img class="table-img"
+                                                src="../img/Management/Avatar-5.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-6.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M5.27814 6.5H15.327C16.4449 6.5 17.3512 7.33147 17.3512 8.35714V11.05L22.7733 7.58333V18.4167L17.3512 14.95V17.6429C17.3512 18.6685 16.4449 19.5 15.327 19.5H5.27814C4.16019 19.5 3.25391 18.6685 3.25391 17.6429V8.35714C3.25391 7.33147 4.16019 6.5 5.27814 6.5Z"
+                                                    stroke="var(--mode-green)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.67578 6.5V19.5" stroke="var(--mode-green)"
+                                                    stroke-width="2" />
+                                            </svg>
+
+                                        </span>
+                                        <small style="color: var(--mode-black);">video3.mp3
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">March 27, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">127.1mb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -20px;"><small class="private-user"
+                                                style="color: var(--bg-color); background-color: var(--mode-primary);">NQ</small></a>
+                                        <a href="#" class="table-link" style="--i: -10px;"><img class="table-img"
+                                                src="../img/Management/Avatar-1.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><small class="private-user"
+                                                style="color: var(--bg-color); background-color: var(--mode-blue);">GA</small></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.08398 5.25C1.08398 4.14543 1.97941 3.25 3.08398 3.25H22.941C24.0456 3.25 24.941 4.14543 24.941 5.25V20.75C24.941 21.8546 24.0456 22.75 22.941 22.75H3.08398C1.97942 22.75 1.08398 21.8546 1.08398 20.75V5.25Z"
+                                                    stroke="var(--mode-blue)" stroke-width="2"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.96484 22.7503L17.7004 10.0494C18.4181 9.27272 19.6163 9.18893 20.4351 9.85816L24.942 13.542"
+                                                    stroke="var(--mode-blue)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.08398 10.833L9.48816 19.2288" stroke="var(--mode-blue)"
+                                                    stroke-width="2" />
+                                                <path
+                                                    d="M13.5542 14.083C13.5542 12.9997 11.6122 10.833 9.21654 10.833C6.82093 10.833 4.87891 12.9997 4.87891 14.083"
+                                                    stroke="var(--mode-blue)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                        <small style="color: var(--mode-black);">image3.png
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">March 27, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">762kb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -30px;"><img class="table-img"
+                                                src="../img/Management/Avatar-7.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: -15px;"><img class="table-img"
+                                                src="../img/Management/Avatar8.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-9.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.08398 5.25C1.08398 4.14543 1.97941 3.25 3.08398 3.25H22.941C24.0456 3.25 24.941 4.14543 24.941 5.25V20.75C24.941 21.8546 24.0456 22.75 22.941 22.75H3.08398C1.97942 22.75 1.08398 21.8546 1.08398 20.75V5.25Z"
+                                                    stroke="var(--mode-blue)" stroke-width="2"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.96484 22.7503L17.7004 10.0494C18.4181 9.27272 19.6163 9.18893 20.4351 9.85816L24.942 13.542"
+                                                    stroke="var(--mode-blue)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.08398 10.833L9.48816 19.2288" stroke="var(--mode-blue)"
+                                                    stroke-width="2" />
+                                                <path
+                                                    d="M13.5542 14.083C13.5542 12.9997 11.6122 10.833 9.21654 10.833C6.82093 10.833 4.87891 12.9997 4.87891 14.083"
+                                                    stroke="var(--mode-blue)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                        <small style="color: var(--mode-black);">file3.gif
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">March 25, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">762kb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -15px;"><img class="table-img"
+                                                src="../img/Management/Avatar-10.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-11.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M5.27814 6.5H15.327C16.4449 6.5 17.3512 7.33147 17.3512 8.35714V11.05L22.7733 7.58333V18.4167L17.3512 14.95V17.6429C17.3512 18.6685 16.4449 19.5 15.327 19.5H5.27814C4.16019 19.5 3.25391 18.6685 3.25391 17.6429V8.35714C3.25391 7.33147 4.16019 6.5 5.27814 6.5Z"
+                                                    stroke="var(--mode-green)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.67578 6.5V19.5" stroke="var(--mode-green)"
+                                                    stroke-width="2" />
+                                            </svg>
+                                        </span>
+                                        <small style="color: var(--mode-black);">video.avi
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">March 14, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">2.43gb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -10px;"><small class="private-user"
+                                                style="color: var(--bg-color); background-color: var(--mode-blue);">YA</small></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-12.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M19.7733 23.9163H6.25391C5.14934 23.9163 4.25391 23.0209 4.25391 21.9163V4.08301C4.25391 2.97844 5.14934 2.08301 6.25391 2.08301H10.5546C12.2114 2.08301 13.5546 3.42615 13.5546 5.08301V8.24967C13.5546 9.63039 14.6739 10.7497 16.0546 10.7497H18.7733C20.4301 10.7497 21.7733 12.0928 21.7733 13.7497V21.9163C21.7733 23.0209 20.8778 23.9163 19.7733 23.9163Z"
+                                                    stroke="var(--mode-primary)" stroke-width="2" />
+                                                <path
+                                                    d="M19.7733 23.9163H6.25391C5.14934 23.9163 4.25391 23.0209 4.25391 21.9163V4.08301C4.25391 2.97844 5.14934 2.08301 6.25391 2.08301H10.3701C12.7286 2.08301 14.9669 3.12367 16.4869 4.92693L19.89 8.96413C21.1062 10.4069 21.7733 12.2332 21.7733 14.1202V21.9163C21.7733 23.0209 20.8778 23.9163 19.7733 23.9163Z"
+                                                    stroke="var(--mode-primary)" stroke-width="2" />
+                                            </svg>
+
+                                        </span>
+                                        <small style="color: var(--mode-black);">file1.pdf
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">March 13, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">324kb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -45px;"><img class="table-img"
+                                                src="../img/Management/Avatar-13.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: -30px;"><img class="table-img"
+                                                src="../img/Management/Avatar-2.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: -15px;"><img class="table-img"
+                                                src="../img/Management/Avatar-7.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-14.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                                <!-- <tr> -->
+                                <div class="row p-0 pb-1 pt-3 overflow-hidden"
+                                    style="border-bottom: 1px solid var(--nav-icon);">
+
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <span class="me-2">
+                                            <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.08398 5.25C1.08398 4.14543 1.97941 3.25 3.08398 3.25H22.941C24.0456 3.25 24.941 4.14543 24.941 5.25V20.75C24.941 21.8546 24.0456 22.75 22.941 22.75H3.08398C1.97942 22.75 1.08398 21.8546 1.08398 20.75V5.25Z"
+                                                    stroke="var(--mode-green)" stroke-width="2"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.96484 22.7503L17.7004 10.0494C18.4181 9.27272 19.6163 9.18893 20.4351 9.85816L24.942 13.542"
+                                                    stroke="var(--mode-green)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.08398 10.833L9.48816 19.2288" stroke="var(--mode-green)"
+                                                    stroke-width="2" />
+                                                <path
+                                                    d="M13.5542 14.083C13.5542 12.9997 11.6122 10.833 9.21654 10.833C6.82093 10.833 4.87891 12.9997 4.87891 14.083"
+                                                    stroke="var(--mode-green)" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+
+                                        </span>
+                                        <small style="color: var(--mode-black);">image3.png
+                                        </small>
+                                    </div>
+                                    <div class="col-3 p-0 d-none d-sm-block">
+
+                                        <small style="color: var(--mode-black);">March 2, 2021
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0">
+                                        <small style="color: var(--mode-black);">1.77mb
+                                        </small>
+                                    </div>
+                                    <div class="col-4 col-sm-3 p-0 text-end">
+                                        <a href="#" class="table-link" style="--i: -30px;"><img class="table-img"
+                                                src="../img/Management/Avatar-3.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: -15px;"><img class="table-img"
+                                                src="../img/Management/Avatar-4.png" alt=""></a>
+                                        <a href="#" class="table-link" style="--i: 0;"><img class="table-img"
+                                                src="../img/Management/Avatar-2.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <!-- </tr> -->
+                            </div>
+                            <!-- </tbody> -->
+                        </div>
+                        <!-- </table> -->
+                    </div>
+                    <!-- Div's End -->
+                </div>
+                <!--  -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Body Content Ends -->
+
+
+    <!-- End -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+        </script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>
