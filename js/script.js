@@ -21,10 +21,10 @@ $(document).ready(function () {
     // Dark Mode
 
     $('.light').click(function () {
-        $('body').addClass('dark-mode')
+        $('body').addClass('dark-mode');
     })
     $('.dark').click(function () {
-        $('body').removeClass('dark-mode')
+        $('body').removeClass('dark-mode');
     })
 
 
@@ -47,10 +47,18 @@ $(document).ready(function () {
 
     // 
 
-    $('.search-icon,.nav-close-btn,.noti-icon').click(function () {
+    $('.search-icon,.nav-close-btn').click(function () {
         $('.navbar-form').toggleClass("show");
-        $('.submenu').toggleClass("show");
     })
+    $('.noti-icon').click(function () {
+    console.log(window.innerWidth <= 576, window.innerWidth );
+        if (window.innerWidth <= 576) {
+                $('.submenu').toggleClass("show");
+        }
+    })
+   
+
+
 
     // 
 
